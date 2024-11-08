@@ -11,7 +11,10 @@ class PayloadCache(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
-    # We use SHA-256 hash to store the hash of the payload
+    # We hashes the payload to store in the database,
+    # because it will produce a unique and fixed length value.
+    # Also it provides an efficient lookup operation.
+    # We use SHA-256 hash to store in the database.
     hash = Column(String(64), unique=True, index=True, nullable=False)
 
     input_payload = Column(JSONB, nullable=False)
