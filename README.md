@@ -10,8 +10,9 @@ The service is implemented using FastAPI and is containerized using Docker.
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
+- [Stacks](#stacks)
 - [Development mode](#development-mode)
-
+- [Deployment](#deployment)
 
 ## Prerequisites
 Before using this project, ensure you have the following prerequisites installed:
@@ -19,6 +20,11 @@ Before using this project, ensure you have the following prerequisites installed
 - Python 3.11+
 - Docker (for building and running Docker images)
 - Poetry (for dependency management)
+
+## Stacks
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
 
 ## Development mode
 
@@ -50,3 +56,16 @@ fastapi dev app/main.py
 ```
 
 For the api documentation, go to `http://localhost:8000/docs`.
+
+
+## Deployment
+First, create a directory `pgdata` in the root of the project to store the PostgreSQL data.
+```
+mkdir pgdata
+```
+
+Ensure you have Docker installed and running.
+```
+docker compose up --build -d
+```
+Now you can access the api at `http://localhost:8000`.

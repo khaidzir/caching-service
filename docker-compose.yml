@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=caching_service
     ports:
       - 9432:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
 
   caching-service:
     image: caching-service
