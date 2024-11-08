@@ -8,3 +8,20 @@ services:
       - POSTGRES_DB=caching_service
     ports:
       - 9432:5432
+
+  caching-service:
+    image: caching-service
+    container_name: caching-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=postgresql
+      - DB_PORT=5432
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+      - DB_NAME=caching_service
+    ports:
+      - 8000:80
+    depends_on:
+      - postgresql
